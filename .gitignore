@@ -1,0 +1,33 @@
+# Entorno virtual
+venv/
+.env
+
+# Archivos Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Base de datos
+*.db
+
+# Archivos de migración que no son necesarios
+migrations/__pycache__/
+migrations/versions/__pycache__/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# VSCode config (opcional)
+.vscode/
+
+# Archivos de log o debug
+*.log
+
+# node_modules 
+node_modules/
+
+# Archivos temporales
+*.bak
+*.swp
+*.tmp
