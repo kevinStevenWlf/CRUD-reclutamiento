@@ -1,0 +1,622 @@
+/* Variables CSS para consistencia */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --accent-color: #667eea;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --bg-overlay: rgba(255, 255, 255, 0.1);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --border-radius: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--primary-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+header {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  color: var(--text-primary);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow-soft);
+  border-bottom: 1px solid var(--bg-overlay);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0 0 1rem 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background: var(--bg-overlay);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav button:hover {
+  background: var(--primary-gradient);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+main {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.vista {
+  display: none;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vista.activa {
+  display: block;
+}
+
+/* Estilos específicos para vista-candidatos */
+#vista-candidatos {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--bg-overlay);
+  position: relative;
+  overflow: hidden;
+}
+
+#vista-candidatos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+}
+
+#vista-candidatos h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+#vista-candidatos h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 2.5rem 0 1.5rem 0;
+  position: relative;
+  padding-left: 1rem;
+}
+
+#vista-candidatos h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+/* Formulario moderno */
+#form-candidato {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--bg-overlay);
+}
+
+#form-candidato input {
+  padding: 1rem 1.25rem;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+#form-candidato input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+#form-candidato input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+#form-candidato button {
+  grid-column: 1 / -1;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#form-candidato button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Tabla moderna */
+#tabla-candidatos {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+#tabla-candidatos thead {
+  background: var(--primary-gradient);
+  color: white;
+}
+
+#tabla-candidatos th {
+  padding: 1.25rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#tabla-candidatos td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+#tabla-candidatos tbody tr {
+  transition: var(--transition);
+}
+
+#tabla-candidatos tbody tr:hover {
+  background: rgba(102, 126, 234, 0.05);
+  transform: scale(1.01);
+}
+
+#tabla-candidatos tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Estilos para otras vistas */
+.vista:not(#vista-candidatos) {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--bg-overlay);
+}
+
+.vista h2 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Formularios generales */
+form:not(#form-candidato) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+form:not(#form-candidato) input {
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+form:not(#form-candidato) button {
+  background: var(--secondary-gradient);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+/* Tablas generales */
+table:not(#tabla-candidatos) {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+table:not(#tabla-candidatos) th {
+  background: var(--secondary-gradient);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+table:not(#tabla-candidatos) td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos específicos para vista-reportes */
+#vista-reportes {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--bg-overlay);
+  position: relative;
+  overflow: hidden;
+}
+
+#vista-reportes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--secondary-gradient);
+}
+
+#vista-reportes h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+#vista-reportes h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 2.5rem 0 1.5rem 0;
+  position: relative;
+  padding: 1.5rem;
+  background: rgba(240, 147, 251, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-color);
+}
+
+/* Contenedores de reportes */
+.reporte-section {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--bg-overlay);
+  transition: var(--transition);
+}
+
+.reporte-section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Controles de filtros */
+.reporte-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+#vista-reportes input[type="number"],
+#vista-reportes input[type="date"],
+#vista-reportes input[type="text"] {
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(240, 147, 251, 0.3);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  min-width: 150px;
+}
+
+#vista-reportes input[type="number"]:focus,
+#vista-reportes input[type="date"]:focus,
+#vista-reportes input[type="text"]:focus {
+  outline: none;
+  border-color: #f093fb;
+  box-shadow: 0 0 0 3px rgba(240, 147, 251, 0.2);
+  transform: translateY(-1px);
+}
+
+#vista-reportes input::placeholder {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+/* Botones de reportes */
+#vista-reportes button {
+  background: var(--secondary-gradient);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 10px rgba(240, 147, 251, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#vista-reportes button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(240, 147, 251, 0.4);
+}
+
+#vista-reportes button:active {
+  transform: translateY(0);
+}
+
+/* Resultados de reportes */
+#vista-reportes ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+#vista-reportes li {
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+}
+
+#vista-reportes li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 1);
+}
+
+#vista-reportes li:empty {
+  display: none;
+}
+
+/* Estado vacío para resultados */
+#vista-reportes ul:empty::after {
+  content: '📊 Los resultados aparecerán aquí...';
+  display: block;
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border: 2px dashed rgba(240, 147, 251, 0.3);
+}
+
+/* Separador visual entre reportes */
+#vista-reportes h3:not(:first-of-type) {
+  border-top: 2px solid rgba(240, 147, 251, 0.2);
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+/* Etiquetas para inputs de fecha */
+.fecha-range {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.fecha-range input {
+  margin: 0 0.5rem;
+}
+
+/* Indicadores de estado */
+.loading-indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(240, 147, 251, 0.3);
+  border-radius: 50%;
+  border-top-color: #f093fb;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+  
+  header {
+    padding: 1rem;
+  }
+  
+  nav {
+    gap: 0.5rem;
+  }
+  
+  nav button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  #vista-candidatos {
+    padding: 1.5rem;
+  }
+  
+  #form-candidato {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  
+  #tabla-candidatos {
+    font-size: 0.9rem;
+  }
+  
+  #tabla-candidatos th,
+  #tabla-candidatos td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  #vista-reportes {
+    padding: 1.5rem;
+  }
+  
+  .reporte-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #vista-reportes input[type="number"],
+  #vista-reportes input[type="date"],
+  #vista-reportes input[type="text"] {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  #vista_reportes button {
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .fecha-range {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  #vista-reportes h3 {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+  
+  #vista-candidatos h2 {
+    font-size: 1.8rem;
+  }
+  
+  #vista-reportes h2 {
+    font-size: 1.8rem;
+  }
+  
+  #vista-reportes li {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .reporte-section {
+    padding: 1rem;
+  }
+}

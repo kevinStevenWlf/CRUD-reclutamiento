@@ -39,10 +39,12 @@ def listar_asociaciones():
     for a in asociaciones:
         resultado.append({
             'id': a.id,
+            'candidato_id': a.candidato.id,
             'candidato': f"{a.candidato.nombre} {a.candidato.apellido}",
             'cedula': a.candidato.cedula,
+            'ciudad_domicilio': a.candidato.ciudad_domicilio,  # 👈 AGREGA ESTO
             'oferta': a.oferta.cargo,
-            'cliente_oferta': a.oferta.cliente,
+            'cliente': a.oferta.cliente,
             'orden': a.orden.cargo if a.orden else None,
             'fecha_asociacion': a.fecha_asociacion.isoformat()
         })

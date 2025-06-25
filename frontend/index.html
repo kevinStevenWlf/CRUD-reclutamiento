@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Talento Humano</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Aplicación de Reclutamiento</h1>
+        <nav>
+            <button onclick="mostrarVista('inicio')">🏠 Inicio</button>
+            <button onclick="mostrarVista('candidatos')">🧍 Candidatos</button>
+            <button onclick="mostrarVista('ofertas')">📄 Ofertas</button>
+            <button onclick="mostrarVista('ordenes')">📋 Órdenes</button>
+            <button onclick="mostrarVista('asociaciones')">🔗 Asociaciones</button>
+            <button onclick="mostrarVista('reportes')">📊 Reportes</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="vista-inicio" class="vista activa">
+            <h2>Bienvenido</h2>
+            <p>Selecciona una sección desde el menú para comenzar.</p>
+        </section>
+
+        <section id="vista-candidatos" class="vista">
+            <h2>Gestión de Candidatos</h2>
+
+            <form id="form-candidato">
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="apellido" placeholder="Apellido" required>
+                <input type="text" name="tipo_documento" placeholder="Tipo Doc" value="CC" required>
+                <input type="text" name="cedula" placeholder="Cédula" required>
+                <input type="date" name="fecha_nacimiento" required>
+                <input type="text" name="rh" placeholder="RH">
+                <input type="text" name="ciudad_expedicion" placeholder="Ciudad Exp.">
+                <input type="text" name="ciudad_nacimiento" placeholder="Ciudad Nac.">
+                <input type="text" name="ciudad_domicilio" placeholder="Ciudad Dom.">
+                <button type="submit">Crear</button>
+            </form>
+
+            <h3>Candidatos registrados</h3>
+            <table id="tabla-candidatos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Cédula</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+
+        <section id="vista-ofertas" class="vista">
+            <h2>Gestión de Ofertas Laborales</h2>
+
+            <form id="form-oferta">
+                <input type="text" name="cliente" placeholder="Cliente" required>
+                <input type="text" name="cargo" placeholder="Cargo" required>
+                <input type="text" name="descripcion" placeholder="Descripción">
+                <input type="text" name="ciudad" placeholder="Ciudad">
+                <button type="submit">Crear Oferta</button>
+            </form>
+
+            <h3>Ofertas registradas</h3>
+            <table id="tabla-ofertas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Cargo</th>
+                        <th>Ciudad</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+
+        <section id="vista-ordenes" class="vista">
+            <h2>Gestión de Órdenes de Contratación</h2>
+
+            <form id="form-orden">
+                <input type="text" name="cliente" placeholder="Cliente" required>
+                <input type="text" name="cargo" placeholder="Cargo" required>
+                <input type="text" name="examenes" placeholder="Exámenes requeridos">
+                <button type="submit">Crear Orden</button>
+            </form>
+
+            <h3>Órdenes registradas</h3>
+            <table id="tabla-ordenes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Cargo</th>
+                        <th>Exámenes</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+
+        <section id="vista-asociaciones" class="vista">
+            <h2>Asociar Candidato con Oferta y Orden</h2>
+
+            <form id="form-asociacion">
+                <label>Candidato:</label>
+                <select name="candidato_id" id="select-candidato" required></select>
+
+                <label>Oferta Laboral:</label>
+                <select name="oferta_id" id="select-oferta" required></select>
+
+                <label>Orden de Contratación (opcional):</label>
+                <select name="orden_id" id="select-orden">
+                    <option value="">-- Sin orden --</option>
+                </select>
+
+                <button type="submit">Asociar</button>
+            </form>
+
+            <h3>Asociaciones registradas</h3>
+            <table id="tabla-asociaciones">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Candidato</th>
+                        <th>Oferta</th>
+                        <th>Cliente</th>
+                        <th>Orden</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+
+        <section id="vista-reportes" class="vista">
+            <h2>Reportes</h2>
+
+            <h3>1. Ofertas aplicadas por candidato</h3>
+            <input type="number" id="reporte-candidato-id" placeholder="ID del candidato">
+            <button onclick="reporteOfertasPorCandidato()">Buscar</button>
+            <ul id="resultado-candidato"></ul>
+
+            <h3>2. Órdenes por cliente y ciudad</h3>
+            <button onclick="reporteOrdenesClienteCiudad()">Ver todas</button>
+            <ul id="resultado-ordenes"></ul>
+
+            <h3>3. Candidatos citados a exámenes por fecha</h3>
+            <input type="date" id="fecha-inicio"> a
+            <input type="date" id="fecha-fin">
+            <button onclick="reporteCandidatosPorFecha()">Filtrar</button>
+            <ul id="resultado-fechas"></ul>
+
+            <h3>4. Ofertas por tipo de documento</h3>
+            <button onclick="reporteOfertasPorDocumento()">Ver</button>
+            <ul id="resultado-documentos"></ul>
+
+            <h3>5. Ofertas aplicadas según ciudad de domicilio</h3>
+            <input type="text" id="ciudad-domicilio" placeholder="Ciudad">
+            <button onclick="reporteCiudadDomicilio()">Buscar</button>
+            <ul id="resultado-ciudad"></ul>
+        </section>
+
+    </main>
+</body>
+
+</html>
